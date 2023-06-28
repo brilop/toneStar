@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seletor de Acordes</title>
+  <style>
+    .chord-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      background-color: #ccc;
+      border: none;
+      cursor: pointer;
+    }
+
+    .chord-button.selected {
+      background-color: #ff0000;
+      color: #fff;
+    }
+
+    #selected-chords {
+      margin-top: 20px;
+    }
+
+    #error-message {
+      color: red;
+      margin-top: 10px;
+    }
+
+    #result-message {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Seletor de Acordes</h1>
+
+  <h2>Acordes Maiores</h2>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="C">C</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="D">D</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="E">E</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="F">F</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="G">G</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="A">A</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="B">B</button>
+
+  <h2>Acordes Menores</h2>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="Cm">Cm</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="Dm">Dm</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="Em">Em</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="Fm">Fm</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="Gm">Gm</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="Am">Am</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="Bm">Bm</button>
+  
+  <h2>Acordes Menores Sustenidos</h2>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="C#m">C#m</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="D#m">D#m</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="F#m">F#m</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="G#m">G#m</button>
+  <button class="chord-button" onclick="toggleChord(this)" data-chord="A#m">A#m</button>
+
+  <h2>Acordes Selecionados</h2>
+  <div id="selected-chords"></div>
+
+  <button onclick="enviarLista()">Enviar</button>
+  <p id="error-message"></p>
+  <p id="result-message"></p>
+
+  <script>
+    var selectedChords = [];
+
+    function toggleChord(button) {
+      var chord = button.getAttribute("data-chord");
+
+      if (selectedChords.includes(chord)) {
+        var index = selectedChords.indexOf(chord);
+        selectedChords.splice(index, 1);
+        button.classList.remove("selected");
+      } else {
+        selectedChords.push(chord);
+        button.classList.add("selected");
+      }
+
+      updateSelectedChords();
+    }
+
+    function updateSelectedChords() {
+      var selectedChordsElement = document.getElementById("selected-chords");
+      selectedChordsElement.innerText = selectedChords.join(", ");
+    }
+
+    function enviarLista() {
+      var errorMessage = document.getElementById("error-message");
+
+      if (selectedChords.length >= 4) {
+        // Constrói a string de acordes separados por vírgula
+        var listaAcordes = selectedChords.join(",");
+
+        // Faz a chamada da API enviando a lista de acordes
+        fetch('http://localhost:8080/acordes?notas=' + listaAcordes)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Erro na requisição');
+            }
+            return response.json();
+          })
+          .then(data => {
+            // Processa a resposta da API
+            var resultMessageElement = document.getElementById("result-message");
+            resultMessageElement.innerText = data.tonality;
+          })
+          .catch(error => {
+            // Lida com erros de requisição
+            console.error('Ocorreu um erro:', error);
+            var resultMessageElement = document.getElementById("result-message");
+            resultMessageElement.innerText = "Erro na requisição";
+          });
+
+        // Limpa a lista de acordes e os botões selecionados
+        selectedChords = [];
+        var chordButtons = document.getElementsByClassName("chord-button");
+        for (var i = 0; i < chordButtons.length; i++) {
+          chordButtons[i].classList.remove("selected");
+        }
+        updateSelectedChords();
+
+        errorMessage.innerText = "";
+      } else {
+        errorMessage.innerText = "Selecione pelo menos 4 acordes.";
+      }
+    }
+  </script>
+</body>
+</html>
