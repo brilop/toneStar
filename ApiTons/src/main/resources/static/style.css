@@ -411,12 +411,12 @@ section, footer{
     margin-top: 1px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .footer-content a{
     font-family: Lexend;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 300;
     line-height: 39px;
     letter-spacing: 0em;
@@ -447,12 +447,23 @@ p.link {
     width: 60%;
 }
 
-.footer-content :nth-child(1){
+.footer-logo :nth-child(1){
     margin-right: 20px;
+    justify-content: center;
 }
 
 .footer-content{
-    width: 33%;
+    display: flex;
+    flex-direction: column;   
+}
+
+.footer-contents{
+    display: flex;
+    gap: 11rem;
+}
+
+.footer-logo{
+    width: 40%;
 }
 
 .rotate-image {
