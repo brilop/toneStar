@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="img/icon.svg" type="image/x-icon">
+        <title>API Tom</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="campo">
+                <a href="#Home">Home</a>
+            </div>
+            <div class="campo">
+                <a href="https://github.com/brilop/toneStar/blob/main/README.md" target="_blank">Documentação</a>
+            </div>
+            <div class="logo">
+              <a href="#Home"><img src="img/main_logo.svg" alt="Logo"></a>
+            </div>
+            <div class="campo">
+                <a href="#About-us">Sobre nós</a>
+            </div>
+            <div class="campo">
+                <a href="#APITest" class="btn-header">Testar API</a>
+            </div>
+        </header>
+            <section id="Home">
+                <div class="content">
+                    <h1>Descubra o tom correto de sua sequência.</h1>
+                    <h3>Utilize para certificar com precisão o tom de uma sequência musical, sendo versátil para várias aplicações externas</h3>
+                    <a href="https://github.com/brilop/toneStar/blob/main/README.md" target="_blank">Documentação</a>
+                </div>
+                <div class="content images">
+                <div class="content-image musical-shape">
+                    <img class="rotate-image" src="img/shape.svg" alt="">
+                </div>
+                <div class="content-image">
+                    <img src="img/star_shape.svg" alt="">
+                </div>
+                </div>
+            </section>
+
+            <section id="APITest">
+                <div class="content-api">
+                    <div class="container-api-main">
+                        <h1>Testar API</h1>
+                        <h3>Escolha sua sequência de acordes.</h3>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="C">C</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="D">D</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="E">E</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="F">F</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="G">G</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="A">A</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="B">B</button>
+
+                        <h3></h3>
+
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="Cm">Cm</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="Dm">Dm</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="Em">Em</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="Fm">Fm</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="Gm">Gm</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="Am">Am</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="Bm">Bm</button>
+
+                        <h3></h3>
+                        
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="C#m">C#m</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="D#m">D#m</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="F#m">F#m</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="G#m">G#m</button>
+                        <button class="chord-button" onclick="toggleChord(this)" data-chord="A#m">A#m</button>
+                        
+                        <h3>Acordes Selecionados</h3>
+                        <div id="selected-chords"></div>
+
+                        <button class="btn-enviar" onclick="enviarLista()">Achar o tom</button>
+                        <p id="error-message"></p>
+                    </div>
+                    <div class="container-api">
+                        <div class="circle"></div>
+                        <div class="circle-text"><p id="result-message"></p></div>
+                    </div>
+                  </div>
+                  <div class="content-api-link">
+                    <h2>Como usar</h2>
+                    <p>Utilize o link abaixo para enviar uma requisição com a sua sequência de acordes, ou, alternativamente, explore os métodos disponibilizados pela API.
+                    </p>
+                    <div class="api-link">
+                      <p class="link">https://localhost8080/</p>
+                    </div>
+                  </div>
+            </section>
+
+
+            <section id="About-us">
+              <div class="title-about-us"><h2>Sobre Nós</h2></div>
+                <div class="card-person">
+                    <div class="person">
+                        <div class="person-photo"></div>
+                        <div class="card-name-button"><h2 class="card-name">Brígida</h2></div>                     
+                        <p>Estudante Engenharia da Computação UFES</p>
+                    </div>
+                    <div class="person">  
+                        <div class="person-photo"></div>
+                        <div class="card-name-button"><h2 class="card-name">Daniel</h2></div>                       
+                        <p>Estudante Engenharia da Computação UFES</p>
+                    </div>
+                    <div class="person">   
+                        <div class="person-photo"></div>
+                        <div class="card-name-button"><h2 class="card-name">Nycholas</h2></div>                        
+                        <p>Estudante Engenharia da Computação UFES</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer id="footer">
+              <div class="footer-logo">
+                <a href="#Home"><img class="footer-img" src="img/logo_vertical.png" alt="">
+              </div>
+              <div class="footer-contents">
+                  <div class="footer-content">
+                    <a href="#Home">Home</a>
+                    <a href="https://github.com/brilop/toneStar/blob/main/README.md" target="_blank">Documentação</a>
+                    <a href="#About-us">Sobre Nós</a>
+                  </div>
+                  <div class="footer-content">
+                    <a href="#APITest">Testar API</a>
+                    <a href="" target="_blank">Contato</a>
+    
+                  </div>
+              </div>
+            </footer>
+            <script src="script.js"></script>
+    </body>
+    
+</html>
