@@ -1,7 +1,7 @@
 *{
     margin: 0;
     scroll-behavior: smooth;
-    
+    overflow-x: hidden;
 }
 
 p#result-message {
@@ -106,7 +106,7 @@ section, footer{
 .content {
     padding-top: 185px;
     width: 50%;
-    height: 200px;
+    height: 373px;
     display: table-cell;
     font-family: 'Lexend', sans-serif;
     color: #FFFFFF;
@@ -138,12 +138,21 @@ section, footer{
     margin-top: 5%;
 }
 
+.contetn-images{
+    padding-top: 0;
+}
+
 .content-image{
-    padding-top: 185px;
-    width: 50%;
-    height: 200px;
+    height: 459px;
     display: flex;
-    justify-content: end;
+    justify-content: center;
+    position: absolute;
+    bottom: 60px;
+    overflow-y: hidden;
+}
+
+.musical-shape{
+    z-index: 2;
 }
 
 
@@ -248,6 +257,7 @@ section, footer{
     line-height: 18px;
     letter-spacing: 0em;
     text-align: center;
+    overflow-y: hidden;
 }
 
 .chord-button {
@@ -443,4 +453,17 @@ p.link {
 
 .footer-content{
     width: 33%;
+}
+
+.rotate-image {
+    animation: spin 6s linear infinite;
+}
+  
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
