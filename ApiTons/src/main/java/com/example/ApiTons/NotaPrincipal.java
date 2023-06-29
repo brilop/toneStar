@@ -26,7 +26,7 @@ public class NotaPrincipal extends ConjuntoNotas {
     	if(notaPrincipals.get(0).getQt() == 1 && notaPrincipals.size() > 1) 
     		return "Tonalidade cromada, ou seja, não há um tom definido";
     	else 
-    		return "Seu Tom provavelmete é: " + notaPrincipals.get(0).getAcorde();
+    		return notaPrincipals.get(0).getAcorde();
     }
     
     void imprimeTonica(ArrayList<NotaPrincipal> notaPrincipals) {
