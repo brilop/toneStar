@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 		
 	@GetMapping()
-	public String receberAcordes(@RequestParam("notas") ArrayList<String> lista) {
+	public String receberAcordes(@RequestParam("notas") ArrayList<String> lista) {	
 		ArrayList<ConjuntoNotas> acordes = new ArrayList<ConjuntoNotas>();
 		ArrayList<NotaPrincipal> notaPrincipals = new ArrayList<NotaPrincipal>();
 		Escala escala = new Escala();
@@ -25,19 +25,14 @@ public class Controller {
 			
 			int qt = contarAcorde(acordes, campo);
 
-			NotaPrincipal.add(	notaPrincipals, campo, qt);
+			NotaPrincipal.add(notaPrincipals, campo, qt);
 		}
 		System.out.println(NotaPrincipal.getTom(notaPrincipals));
 		
 		String tom = NotaPrincipal.getTom(notaPrincipals);
 		
 		return "{\"tonality\":\"" + tom + "\"}";
-	
 	}
-	
-	
-	
-	
 	
 	private int contarAcorde(ArrayList<ConjuntoNotas> acordes, Escala campo) {
 		int qt = 0;
