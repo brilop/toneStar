@@ -20,30 +20,42 @@ public class Escala {
 
     private void inicializarCampos() {
         String[] campoC = {"C", "Dm", "Em", "F", "G", "Am", "Bm"};
-        String[] campoD = {"D", "Em", "F#m", "G", "A", "Bm", "Cm"};
-        String[] campoE = {"E", "F#m", "G#m", "A", "B", "C#m", "Dm"};
+        String[] campoD = {"D", "Em", "FHm", "G", "A", "Bm", "Cm"};
+        String[] campoE = {"E", "FHm", "GHm", "A", "B", "CHm", "Dm"};
         String[] campoF = {"F", "Gm", "Am", "Bb", "C", "Dm", "Em"};
-        String[] campoG = {"G", "Am", "Bm", "C", "D", "Em", "F#m"};
-        String[] campoA = {"A", "Bm", "C#m", "D", "E", "F#m", "G#m"};
-        String[] campoB = {"B", "C#m", "D#m", "E", "F#", "G#m", "A#m"};
+        String[] campoG = {"G", "Am", "Bm", "C", "D", "Em", "FHm"};
+        String[] campoA = {"A", "Bm", "CHm", "D", "E", "FHm", "GHm"};
+        String[] campoB = {"B", "CHm", "DHm", "E", "FH", "GHm", "AHm"};
         String[] campoDb = {"Db", "Ebm", "Fm", "Gb", "Ab", "Bbm", "Cm"};
         String[] campoEb = {"Eb", "Fm", "Gm", "Ab", "Bb", "Cm", "Dm"};
         String[] campoGb = {"Gb", "Abm", "Bbm", "Cb", "Db", "Ebm", "Fm"};
         String[] campoAb = {"Ab", "Bb", "Cm", "Db", "Eb", "Fm", "Gm"};
         String[] campoBb = {"Bb", "Cm", "Dm", "Eb", "F", "Gm", "Am"};
-
+        
         campos.add(new Escala("C", "Am", campoC));
         campos.add(new Escala("D", "Bm", campoD));
-        campos.add(new Escala("E", "C#m", campoE));
+        campos.add(new Escala("E", "CHm", campoE));
         campos.add(new Escala("F", "Dm", campoF));
         campos.add(new Escala("G", "Em", campoG));
-        campos.add(new Escala("A", "F#m", campoA));
-        campos.add(new Escala("B", "G#m", campoB));
-        campos.add(new Escala("Db", "A#m", campoDb));
-        campos.add(new Escala("Eb", "Cm", campoEb));
-        campos.add(new Escala("Gb", "D#m", campoGb));
-        campos.add(new Escala("Ab", "Fm", campoAb));
-        campos.add(new Escala("Bb", "Gm", campoBb));
+        campos.add(new Escala("A", "FHm", campoA));
+        campos.add(new Escala("B", "GHm", campoB));
+        campos.add(new Escala("CH", "AHm", campoDb));
+        campos.add(new Escala("DH", "Cm", campoEb));
+        campos.add(new Escala("FH", "DHm", campoGb));
+        campos.add(new Escala("GH", "Fm", campoAb));
+        campos.add(new Escala("AH", "Gm", campoBb));
+          
+        campos.add(new Escala("Cb", "Abm", campoB));
+        campos.add(new Escala("Db", "Bbm", campoDb));
+        campos.add(new Escala("Eb", "Eb", campoEb));
+        campos.add(new Escala("Fb", "Dbm", campoE));
+        campos.add(new Escala("Gb", "Ebm", campoGb));
+        campos.add(new Escala("Ab", "Ab", campoAb));
+        campos.add(new Escala("Bb", "Bb", campoBb));
+        
+        campos.add(new Escala("Gbm", "Gbm", campoA));
+        campos.add(new Escala("Cbm", "Cbm", campoD));
+    
     }
 
     public String getAcorde() {
